@@ -1,14 +1,14 @@
 from random import choice
+import sys
 
 
-
-def open_and_read_file(file_path):
+def open_and_read_file(argv):
     """Takes file path as string; returns text as string.
 
     Takes a string that is a file path, opens the file, and turns
     the file's contents as one string of text.
     """
-    text_file = open(file_path)
+    text_file = open(sys.argv[1])
     str_file = text_file.read()
 
     text_file.close()
