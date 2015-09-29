@@ -8,8 +8,9 @@ def open_and_read_file(file_path):
     the file's contents as one string of text.
     """
     text_file = open(file_path).read()
+    file_path.close()
     return text_file
-    file_path.close() 
+     
 
 
 def make_chains(text_string):
@@ -39,18 +40,29 @@ def make_chains(text_string):
         else:
             list_value = chains[key] 
             list_value.append(words[i + 2])
-    print chains
+    return chains
  
 
 
-# def make_text(chains):
-#     """Takes dictionary of markov chains; returns random text."""
+def make_text(chains):
+    """Takes dictionary of markov chains; returns random text."""
 
-#     text = ""
+    text = ""
+    key = choice(chains.keys())
 
-#     # your code goes here
+    while True:
+        try:
+            word = chains[key]
+            random_word = choice(word)
+            text += " " + random_word
+            key = (key[1],random_word)
 
-#     return text
+        except KeyError:
+            break
+
+    print text
+
+
 
 
 input_path = "green-eggs.txt"
@@ -62,6 +74,6 @@ input_text = open_and_read_file(input_path)
 chains = make_chains(input_text)
 
 # # Produce random text
-# random_text = make_text(chains)
+random_text = make_text(chains)
 
 # print random_text
