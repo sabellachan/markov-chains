@@ -1,15 +1,19 @@
 from random import choice
 
 
+
 def open_and_read_file(file_path):
     """Takes file path as string; returns text as string.
 
     Takes a string that is a file path, opens the file, and turns
     the file's contents as one string of text.
     """
-    text_file = open(file_path).read()
-    file_path.close()
-    return text_file
+    text_file = open(file_path)
+    str_file = text_file.read()
+
+    text_file.close()
+
+    return str_file
      
 
 
@@ -65,7 +69,7 @@ def make_text(chains):
 
 
 
-input_path = "green-eggs.txt"
+input_path = "gettysburg.txt"
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
